@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/nameTextViewIdTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="@color/purple_700"
+        />
+
+    <TextView
+        android:id="@+id/emailTextViewIdTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTextViewIdTeacher"
+        android:layout_marginTop="2dp"
+        android:text="Email"
+        android:textColor="@color/black"
+
+        />
+
+    <TextView
+        android:id="@+id/designationTextViewIdTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailTextViewIdTeacher"
+        android:text="Designation"
+        android:textColor="@color/black"
+
+        />
+
+
+
+
+
+</RelativeLayout>

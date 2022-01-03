@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".AdminLogin">
+
+    <EditText
+        android:id="@+id/nameEditTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+        android:textColorHint="#9C27B0"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textColor="#4CAF50"
+
+        />
+
+
+    <EditText
+        android:id="@+id/passwordEditTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#9C27B0"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textColor="#4CAF50"
+        android:layout_below="@id/nameEditTextId"
+        android:layout_marginTop="10dp"
+
+        />
+
+
+    <Button
+        android:id="@+id/loginBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@id/passwordEditTextId"
+        android:layout_marginTop="20dp"
+
+
+
+        />
+
+
+
+</RelativeLayout>

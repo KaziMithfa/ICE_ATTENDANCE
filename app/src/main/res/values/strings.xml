@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ICE_ATTENDANCE</string>
+
+    <string-array name="desig">
+        <item>Select Designation</item>
+        <item>Professor</item>
+        <item>Assistant Professor</item>
+        <item>Lecturer</item>
+    </string-array>
+</resources>

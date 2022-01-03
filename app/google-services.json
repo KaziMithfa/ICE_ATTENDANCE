@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "314364388662",
+    "project_id": "ice-attendance-32f3f",
+    "storage_bucket": "ice-attendance-32f3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314364388662:android:23f1a1743e945598aabf97",
+        "android_client_info": {
+          "package_name": "com.example.ice_attendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314364388662-af4gtdf7cr7kp06n07av241fhdd6f2vb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ice_attendance",
+            "certificate_hash": "e7383114a196267dcb948a6402c10022a9c41979"
+          }
+        },
+        {
+          "client_id": "314364388662-e4l2ml9va9e748qthubsvpn14f393idj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmEAwbfJl_ba5AWCVGUbq5DNhoq1Y9v48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314364388662-e4l2ml9va9e748qthubsvpn14f393idj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
