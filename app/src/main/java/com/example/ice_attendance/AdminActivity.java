@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private Button sendBtn,coursesBtn;
+    private Button sendBtn,coursesBtn,studentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class AdminActivity extends AppCompatActivity {
 
         sendBtn = findViewById(R.id.sendteacherBtnId);
         coursesBtn = findViewById(R.id.sendCoursesBtnId);
+        studentBtn = findViewById(R.id.sendStudentId);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,27 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+
+        studentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminActivity.this,SelectbatchandTerm.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        coursesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(AdminActivity.this,SelectCourseTerm.class);
+                startActivity(intent);
+
+
+            }
+        });
         
 
 

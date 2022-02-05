@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<group android:id="@+id/grp1">
+
+    <item
+        android:id="@+id/teacherHome"
+        android:title="Home"
+        android:checkable="true"
+
+        />
+
+    <item
+        android:id="@+id/teacherProfile"
+        android:title="Profile"
+
+        />
+
+    <item
+        android:id="@+id/teacherchngpass"
+        android:title="Password"
+
+        />
+
+
+
+
+</group>
+
+
+   <group android:id="@+id/group2">
+
+    <item
+        android:id="@+id/teacherSettings"
+        android:title="Settings"
+
+        />
+
+    <item
+        android:id="@+id/teacherLogout"
+        android:title="Logout"
+
+        />
+
+
+
+
+</group>
+
+
+
+
+
+
+
+</menu>

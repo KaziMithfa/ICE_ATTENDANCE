@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".AddStudent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addStudentToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Add Student"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white"
+        />
+
+    <LinearLayout
+        android:padding="17dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/addStudentNameId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Student Name"
+                android:textSize="17sp"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/addStudentEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textSize="17sp"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/addStudentPhoneId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:textSize="17sp"
+                android:inputType="number"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <Spinner
+            android:backgroundTint="@color/colorPrimary"
+            android:id="@+id/addStudentYear"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+
+
+        </Spinner>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            >
+
+            <EditText
+                android:id="@+id/addstudentId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID"
+                android:textSize="17sp"
+                android:inputType="text"
+                />
+
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/addStudentCourseSp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <Button
+            android:id="@+id/addstudentBtnId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Add Student"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

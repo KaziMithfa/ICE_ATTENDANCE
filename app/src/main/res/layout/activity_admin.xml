@@ -23,6 +23,17 @@
         android:text="Send Courses"/>
 
 
+    <Button
+        android:id="@+id/sendStudentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Student"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+
+
 
 
 

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="17dp"
+    android:gravity="center"
+    tools:context=".TeacherFragment">
+
+   <androidx.cardview.widget.CardView
+       android:id="@+id/teacherInfoCV"
+      android:backgroundTint="#EEF0FA"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:gravity="center"
+           android:orientation="vertical"
+
+           >
+
+           <TextView
+               android:id="@+id/teacherInfoName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Name"
+               android:textAlignment="center"
+               android:gravity="center_horizontal"
+               android:textSize="17sp"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               />
+
+
+           <TextView
+               android:id="@+id/teacherInfoId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Id"
+               android:textAlignment="center"
+               android:gravity="center_horizontal"
+               android:textSize="17sp"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"
+               />
+
+           <TextView
+               android:id="@+id/teacherInfoDesig"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Designation"
+               android:textAlignment="center"
+               android:gravity="center_horizontal"
+               android:textSize="17sp"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:layout_marginTop="10dp"
+               />
+
+
+
+
+
+
+
+
+
+       </LinearLayout>
+
+
+   </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ViewAttendaceCV"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/viewattendance"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Attendance"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    />
+
+
+                
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/TakeAttendaceCV"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/takeattendance"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Take Attendance"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+        
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

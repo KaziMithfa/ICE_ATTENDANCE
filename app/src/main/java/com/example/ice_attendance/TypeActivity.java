@@ -31,6 +31,14 @@ public class TypeActivity extends AppCompatActivity {
             }
         });
 
+        TeacherCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TypeActivity.this,TeacherLogin.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 

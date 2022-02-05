@@ -13,7 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ICE_ATTENDANCE">
-        <activity android:name=".AddCourses"></activity>
+        <activity android:name=".TeacherHomeActivity">
+            android:theme="@style/NoActionBar"
+
+        </activity>
+        <activity android:name=".TeacherLogin" />
+        <activity android:name=".SelectbatchandTerm" />
+        <activity android:name=".SelectCourseTerm" />
+        <activity android:name=".AddStudent" />
+        <activity android:name=".SelectBatch" />
+        <activity android:name=".StudentList" />
+        <activity android:name=".AddCourses" />
         <activity android:name=".CourseListActivity" />
         <activity android:name=".AddTeacher" />
         <activity android:name=".AdminTeacherActivity" />

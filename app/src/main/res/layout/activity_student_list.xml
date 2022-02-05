@@ -4,42 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CourseListActivity"
+    tools:context=".StudentList">
 
-    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/courseListId"
+
+        android:id="@+id/studentListToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Course List"
-        android:background="@color/colorPrimary"
+        app:title="Student List"
         app:titleTextColor="@color/white"
-        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
         />
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courseListRecylerViewId"
+        android:id="@+id/studentListRecylerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/courseListId"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/studentListToolbar"
         />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addCoursesBtn"
+        android:id="@+id/addnewStudentbtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/add_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@color/colorPrimary"
+        android:src="@drawable/add_btn"
+
         />
-
-
-
-
-
 
 </RelativeLayout>

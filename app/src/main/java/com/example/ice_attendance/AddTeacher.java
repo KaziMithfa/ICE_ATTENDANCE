@@ -133,7 +133,7 @@ public class AddTeacher extends AppCompatActivity {
             String key = TeachersRef.push().getKey();
 
 
-            Teacher teacher = new Teacher(Id,name,Email,address,phone,selectDesig);
+            Teacher teacher = new Teacher(Id,name,Email,address,phone,selectDesig,"1234");
             TeachersRef.child(key).setValue(teacher).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull  Task<Void> task) {
