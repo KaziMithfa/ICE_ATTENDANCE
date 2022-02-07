@@ -1,8 +1,10 @@
 package com.example.ice_attendance;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,6 +25,8 @@ public class TeacherFragment extends Fragment {
     private String key;
     private TextView name,id,designation;
     private DatabaseReference teachersRef;
+    private String teacherName;
+    private CardView teacherAttendanceCardView,ViewAttendanceCardView;
 
 
     public TeacherFragment() {
@@ -50,6 +54,9 @@ public class TeacherFragment extends Fragment {
         name = view.findViewById(R.id.teacherInfoName);
         id = view.findViewById(R.id.teacherInfoId);
         designation = view.findViewById(R.id.teacherInfoDesig);
+        teacherAttendanceCardView = view.findViewById(R.id.TakeAttendaceCV);
+        ViewAttendanceCardView = view.findViewById(R.id.ViewAttendaceCV);
+
 
         Bundle data = getArguments();
 
@@ -70,12 +77,38 @@ public class TeacherFragment extends Fragment {
                     name.setText(teacher.getName());
                     id.setText(teacher.getId());
                    designation.setText(teacher.getDesignation());
+
+                   teacherName = teacher.getName();
                 }
 
             }
 
             @Override
             public void onCancelled( DatabaseError error) {
+
+            }
+        });
+
+        teacherAttendanceCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getContext(),SelectCourseActivity.class);
+                intent.putExtra("Key",key);
+                intent.putExtra("Name",teacherName);
+                startActivity(intent);
+
+            }
+        });
+
+        ViewAttendanceCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getContext(),SelectCourseActivity.class);
+                intent.putExtra("Key",key);
+                intent.putExtra("Name",teacherName);
+                startActivity(intent);
 
             }
         });

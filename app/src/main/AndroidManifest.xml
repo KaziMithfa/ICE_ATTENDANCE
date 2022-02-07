@@ -13,9 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ICE_ATTENDANCE">
+        <activity
+            android:name=".SelectCourseActivity"
+            android:exported="false" />
         <activity android:name=".TeacherHomeActivity">
             android:theme="@style/NoActionBar"
-
         </activity>
         <activity android:name=".TeacherLogin" />
         <activity android:name=".SelectbatchandTerm" />
