@@ -45,6 +45,8 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
@@ -59,6 +61,22 @@
                 />
             
             
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_border">
+
+            <Spinner
+                android:id="@+id/courseBatchSpinnerT"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/colorPrimary"
+                />
+
+
         </LinearLayout>
 
         <Button

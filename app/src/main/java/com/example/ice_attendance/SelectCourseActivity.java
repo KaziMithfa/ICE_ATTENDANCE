@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,17 +21,21 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SelectCourseActivity extends AppCompatActivity {
 
-    private Spinner courseSpinner,termSpinner;
+    private Spinner courseSpinner,termSpinner,batchSpinner;
     private Button sendButton;
-    private String key,teacherName;
+    private String key,teacherName,type;
     private List<String> courseNameList = new ArrayList<>();
     private List<String> courseTermList = new ArrayList<>();
-    private String selectedCourse,selectedTerm;
+    private List<String> batchList = new ArrayList<>();
+    private String selectedCourse,selectedTerm,selectedBatch;
     private DatabaseReference courseRef;
+    private DatabaseReference BatchRef;
+
     private DatabaseReference selcetCourseRef;
 
     @Override
@@ -45,20 +50,89 @@ public class SelectCourseActivity extends AppCompatActivity {
 
         courseSpinner = findViewById(R.id.courseTitleSpinnerT);
         termSpinner = findViewById(R.id.courseTermSpinnerT);
+        batchSpinner = findViewById(R.id.courseBatchSpinnerT);
         sendButton = findViewById(R.id.tsNextBtn);
 
+        BatchRef = FirebaseDatabase.getInstance().getReference().child("Batches");
         courseRef = FirebaseDatabase.getInstance().getReference().child("Courses");
         selcetCourseRef = FirebaseDatabase.getInstance().getReference().child("Courses");
 
         key = getIntent().getStringExtra("Key");
         teacherName = getIntent().getStringExtra("Name");
-
-
-
+        type = getIntent().getStringExtra("type");
         fetchTerm();
 
+        BatchRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                batchList.clear();
+                batchList.add(0,"Select Batch");
+
+                if(snapshot.exists()){
+
+                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                        String batchName = snapshot1.getKey().toString();
+                        batchList.add(batchName);
+                    }
 
 
+
+
+                }
+
+                ArrayAdapter<String>batchAdapter = new ArrayAdapter<>(SelectCourseActivity.this, android.R.layout.simple_list_item_1,
+                        batchList);
+                batchSpinner.setAdapter(batchAdapter);
+                batchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        selectedBatch = adapterView.getItemAtPosition(i).toString();
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+            }
+
+
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectedCourse.equals("Select Course")){
+                    Toast.makeText(SelectCourseActivity.this, "Please , select the course please", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                Intent intent = new Intent(SelectCourseActivity.this, DatePickerActivity.class);
+                intent.putExtra("SC",selectedCourse);
+                intent.putExtra("type",type);
+                intent.putExtra("SB",selectedBatch);
+                intent.putExtra("ST",selectedTerm);
+                startActivity(intent);
+
+                }
+
+
+            }
+        });
     }
 
 
@@ -104,7 +178,6 @@ public class SelectCourseActivity extends AppCompatActivity {
                                             if(course.getTeacher().equals(teacherName)){
                                                 String name = course.getCourse_name();
                                                 courseNameList.add(name);
-
                                             }
 
                                         }
@@ -140,13 +213,6 @@ public class SelectCourseActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
-
-
             }
 
             @Override
@@ -154,15 +220,5 @@ public class SelectCourseActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
     }
 }

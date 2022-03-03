@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/activity_date_picker.xml" value="0.19972826086956522" />
         <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/activity_select_course.xml" value="0.1897644927536232" />
+        <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/activity_selectbatchand_term.xml" value="0.1" />
+        <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/activity_takek_attendance.xml" value="0.19972826086956522" />
+        <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/attendancepopup.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/fragment_teacher.xml" value="0.1" />
+        <entry key="..\:/Android Projects/ICE_ATTENDANCE/app/src/main/res/layout/take_attendance.xml" value="0.19972826086956522" />
       </map>
     </option>
   </component>

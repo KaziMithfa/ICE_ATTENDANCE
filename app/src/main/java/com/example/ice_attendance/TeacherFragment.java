@@ -96,6 +96,7 @@ public class TeacherFragment extends Fragment {
                 Intent intent = new Intent(getContext(),SelectCourseActivity.class);
                 intent.putExtra("Key",key);
                 intent.putExtra("Name",teacherName);
+                intent.putExtra("type","TakeAttendance");
                 startActivity(intent);
 
             }
@@ -108,6 +109,7 @@ public class TeacherFragment extends Fragment {
                 Intent intent = new Intent(getContext(),SelectCourseActivity.class);
                 intent.putExtra("Key",key);
                 intent.putExtra("Name",teacherName);
+                intent.putExtra("type","ViewAttendance");
                 startActivity(intent);
 
             }
