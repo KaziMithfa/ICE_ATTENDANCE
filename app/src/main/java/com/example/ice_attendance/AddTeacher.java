@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -141,6 +142,9 @@ public class AddTeacher extends AppCompatActivity {
                     if(task.isSuccessful())
                     {
                         Toast.makeText(AddTeacher.this, "Teacher data is added successfully.....", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddTeacher.this,AdminTeacherActivity.class);
+                        startActivity(intent);
+                        finish();
 
                     }
 

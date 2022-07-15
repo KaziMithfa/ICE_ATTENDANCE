@@ -8,11 +8,11 @@
     tools:context=".AdminLogin">
 
     <EditText
-        android:id="@+id/nameEditTextId"
+        android:id="@+id/phoneEditTextId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:inputType="text"
+        android:hint="Phone"
+        android:inputType="number"
         android:textColorHint="#9C27B0"
         android:textAlignment="center"
         android:gravity="center_horizontal"
@@ -31,7 +31,7 @@
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textColor="#4CAF50"
-        android:layout_below="@id/nameEditTextId"
+        android:layout_below="@id/phoneEditTextId"
         android:layout_marginTop="10dp"
 
         />

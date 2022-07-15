@@ -25,10 +25,24 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tARv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_above="@id/submitAttendancebtn"
+            />
+
+        <EditText
+            android:id="@+id/numberofClassesId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of classes"
+            android:inputType="number"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_above="@id/submitAttendancebtn"
+            android:layout_marginBottom="5dp"
+            />
 
         <Button
-            android:id="@+id/submitbtn"
+            android:id="@+id/submitAttendancebtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -43,7 +57,7 @@
             android:textSize="17sp"
             />
 
-        />
+
 
 
 

@@ -91,6 +91,8 @@ public class AddCourses extends AppCompatActivity {
                     }
                 }
 
+
+
                 ArrayAdapter<String>CourseTitleAdapter = new ArrayAdapter<>(AddCourses.this, android.R.layout.simple_list_item_1,courseTitleList);
                 CourseTitleSp.setAdapter(CourseTitleAdapter);
 

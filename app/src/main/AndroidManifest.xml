@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ICE_ATTENDANCE">
         <activity
+            android:name=".ViewAttendance"
+            android:exported="false" />
+        <activity
             android:name=".TakekAttendance"
             android:exported="false" />
         <activity

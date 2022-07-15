@@ -55,14 +55,9 @@ public class AdminTeacherActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder( TeacherViewHolder teacherViewHolder, int i,  Teacher teacher) {
 
-
-
                 teacherViewHolder.nameTextView.setText(teacher.getName());
                 teacherViewHolder.emailTextView.setText(teacher.getEmail());
                 teacherViewHolder.designationTextView.setText(teacher.getDesignation());
-
-
-
             }
 
             @NonNull

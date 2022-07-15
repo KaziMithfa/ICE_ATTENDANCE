@@ -19,17 +19,17 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AdminLogin extends AppCompatActivity {
 
-    private EditText NameEditText, passwordEditText;
+    private EditText PhoneEditText, passwordEditText;
     private Button LoginBtn;
     private DatabaseReference Ref;
-    private String phone = "01837705605";
+    private String phone ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 
-        NameEditText = findViewById(R.id.nameEditTextId);
+        PhoneEditText = findViewById(R.id.phoneEditTextId);
         passwordEditText = findViewById(R.id.passwordEditTextId);
         LoginBtn = findViewById(R.id.loginBtnId);
         Ref = FirebaseDatabase.getInstance().getReference().child("admins");
@@ -41,11 +41,11 @@ public class AdminLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String name = NameEditText.getText().toString();
+                String phone = PhoneEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
 
-                if(TextUtils.isEmpty(name))
+                if(TextUtils.isEmpty(phone))
                 {
                     Toast.makeText(AdminLogin.this, "Please , insert the name of the admin...", Toast.LENGTH_SHORT).show();
                 }
@@ -57,7 +57,7 @@ public class AdminLogin extends AppCompatActivity {
 
                 else{
 
-                    ValidAdmin(name,password);
+                    ValidAdmin(phone,password);
 
                 }
 
@@ -67,39 +67,44 @@ public class AdminLogin extends AppCompatActivity {
 
             }
 
-            private void ValidAdmin(String name ,String password) {
+            private void ValidAdmin(String phone ,String password) {
+
+              Ref.addValueEventListener(new ValueEventListener() {
+                  @Override
+                  public void onDataChange(@NonNull DataSnapshot snapshot) {
+                      if(snapshot.child(phone).exists()){
+
+                          String pass = snapshot.child(phone).child("password").getValue().toString();
+
+                          if(pass.equals(password)){
+
+
+                              Toast.makeText(AdminLogin.this, "Welcome you are logged in successfully...!!!!", Toast.LENGTH_SHORT).show();
+                              Intent intent = new Intent(AdminLogin.this,AdminActivity.class);
+                              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                              startActivity(intent);
+
+                          }
+
+                          else{
+                              Toast.makeText(AdminLogin.this, "your password is incorrect..", Toast.LENGTH_SHORT).show();
+                          }
 
 
 
-                Ref.child(phone).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
+                      }
 
-                        if (snapshot.hasChild("name") && snapshot.hasChild("password")) {
-                            String AdminName = snapshot.child("name").getValue().toString();
-                            String Adminpassword = snapshot.child("password").getValue().toString();
+                      else{
+                          Toast.makeText(AdminLogin.this, "This admin number is not valid.....", Toast.LENGTH_SHORT).show();
+                      }
+                  }
 
-                            if (AdminName.equals(name)) {
-                                if (Adminpassword.equals(password)) {
-                                    Intent intent = new Intent(AdminLogin.this, AdminActivity.class);
-                                    startActivity(intent);
-                                    Toast.makeText(AdminLogin.this, "You are logged in successfully....", Toast.LENGTH_SHORT).show();
+                  @Override
+                  public void onCancelled(@NonNull DatabaseError error) {
 
-                                } else {
-                                    Toast.makeText(AdminLogin.this, "Your password in incorrect ,please , try again!!!!!", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(AdminLogin.this, "Your name is incorrect... , please ,try again!!!!!!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                  }
+              });
 
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-
-                    }
-                });
 
             }
         });

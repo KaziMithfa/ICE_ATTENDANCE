@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class DatePickerActivity extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class DatePickerActivity extends AppCompatActivity {
     private Button button;
     private ImageView imageView;
     private DatePickerDialog datePickerDialog;
-    private String type,course,batch,term;
+    private String type,course,batch,term,date,teacherName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class DatePickerActivity extends AppCompatActivity {
         course = getIntent().getStringExtra("SC");
         batch = getIntent().getStringExtra("SB");
         term = getIntent().getStringExtra("ST");
+        teacherName = getIntent().getStringExtra("teacherName");
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +52,8 @@ public class DatePickerActivity extends AppCompatActivity {
                                 StringBuilder stringBuilder = new StringBuilder();
 
 
-                                stringBuilder.append(i2+"/");
-                                stringBuilder.append((i1+1)+"/");
+                                stringBuilder.append(i2+"-");
+                                stringBuilder.append((i1+1)+"-");
                                 stringBuilder.append(i);
                                 dateEditText.setText(stringBuilder.toString());
 
@@ -59,6 +61,8 @@ public class DatePickerActivity extends AppCompatActivity {
                             }
                         },currentYear,currentMonth,currentDay
                 );
+
+
 
                 datePickerDialog.show();
 
@@ -68,21 +72,38 @@ public class DatePickerActivity extends AppCompatActivity {
         });
 
         button.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
-                if(type.equals("TakeAttendance")){
+                date = dateEditText.getText().toString();
 
-                    Intent intent = new Intent(DatePickerActivity.this,TakekAttendance.class);
-                    intent.putExtra("SC",course);
-                    intent.putExtra("SB",batch);
-                    intent.putExtra("ST",term);
-                    startActivity(intent);
+                if(!date.isEmpty()){
+
+                    if(type.equals("TakeAttendance")){
+
+                        Intent intent = new Intent(DatePickerActivity.this,TakekAttendance.class);
+                        intent.putExtra("SC",course);
+                        intent.putExtra("SB",batch);
+                        intent.putExtra("ST",term);
+                        intent.putExtra("date",date);
+                        intent.putExtra("teacherName",teacherName);
+
+                        startActivity(intent);
+
+                    }
+
+                    else if(type.equals("ViewAttendance")){
+
+                    }
 
                 }
 
-                else if(type.equals("ViewAttendance")){
-
+                else{
+                    Toast.makeText(DatePickerActivity.this, "Please , insert today's date.....", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
     }

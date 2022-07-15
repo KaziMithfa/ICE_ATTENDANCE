@@ -32,7 +32,7 @@ public class SelectCourseActivity extends AppCompatActivity {
     private List<String> courseNameList = new ArrayList<>();
     private List<String> courseTermList = new ArrayList<>();
     private List<String> batchList = new ArrayList<>();
-    private String selectedCourse,selectedTerm,selectedBatch;
+    private String selectedCourse,selectedTerm,selectedBatch,date;
     private DatabaseReference courseRef;
     private DatabaseReference BatchRef;
 
@@ -60,6 +60,7 @@ public class SelectCourseActivity extends AppCompatActivity {
         key = getIntent().getStringExtra("Key");
         teacherName = getIntent().getStringExtra("Name");
         type = getIntent().getStringExtra("type");
+
         fetchTerm();
 
         BatchRef.addValueEventListener(new ValueEventListener() {
@@ -116,19 +117,46 @@ public class SelectCourseActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(selectedCourse.equals("Select Course")){
-                    Toast.makeText(SelectCourseActivity.this, "Please , select the course please", Toast.LENGTH_SHORT).show();
+
+                if(type.equals("TakeAttendance")){
+
+                    if(selectedCourse.equals("Select Course")){
+                        Toast.makeText(SelectCourseActivity.this, "Please , select the course please", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                        Intent intent = new Intent(SelectCourseActivity.this, DatePickerActivity.class);
+                        intent.putExtra("SC",selectedCourse);
+                        intent.putExtra("type",type);
+                        intent.putExtra("SB",selectedBatch);
+                        intent.putExtra("ST",selectedTerm);
+                        intent.putExtra("teacherName",teacherName);
+                        startActivity(intent);
+
+                    }
+
                 }
 
                 else{
-                Intent intent = new Intent(SelectCourseActivity.this, DatePickerActivity.class);
-                intent.putExtra("SC",selectedCourse);
-                intent.putExtra("type",type);
-                intent.putExtra("SB",selectedBatch);
-                intent.putExtra("ST",selectedTerm);
-                startActivity(intent);
+
+                    if(selectedCourse.equals("Select Course")){
+                        Toast.makeText(SelectCourseActivity.this, "Please , select the course please", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                        Intent intent = new Intent(SelectCourseActivity.this,ViewAttendance.class);
+                        intent.putExtra("SC",selectedCourse);
+                        intent.putExtra("type",type);
+                        intent.putExtra("SB",selectedBatch);
+                        intent.putExtra("ST",selectedTerm);
+                        intent.putExtra("teacherName",teacherName);
+                        startActivity(intent);
+
+                    }
 
                 }
+
+
 
 
             }
