@@ -36,6 +36,7 @@ public class TypeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(TypeActivity.this,TeacherLogin.class);
                 startActivity(intent);
+                finish();
             }
         });
 

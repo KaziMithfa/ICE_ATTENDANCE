@@ -40,8 +40,9 @@ public class TeacherHomeActivity extends AppCompatActivity implements Navigation
         teacherToolbar = findViewById(R.id.teacher_toolbar_id);
         teacherNavigationView = findViewById(R.id.teacher_nav_view_id);
         setSupportActionBar(teacherToolbar);
-
         key = getIntent().getStringExtra("Key");
+
+
 
         if(savedInstanceState == null){
 
@@ -112,6 +113,7 @@ public class TeacherHomeActivity extends AppCompatActivity implements Navigation
     }
 
 
+
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -137,31 +139,54 @@ public class TeacherHomeActivity extends AppCompatActivity implements Navigation
                 /*getSupportFragmentManager().beginTransaction().replace(R.id.teacherfragmetncontainer,
                         new TeacherFragment()).commit();*/
 
+
+
+
                 TeacherFragment teacherFragment = new TeacherFragment();
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
                 Bundle data = new Bundle();
-                data.putString("Key",key);
+
+                data.putString("token",key);
                 teacherFragment.setArguments(data);
-                fragmentTransaction.replace(R.id.teacherfragmetncontainer,new TeacherFragment()).commit();
+                fragmentTransaction.replace(R.id.teacherfragmetncontainer,teacherFragment).commit();
 
 
                 break;
+
+            case R.id.teacherSettings:
+
+                Intent intent = new Intent(TeacherHomeActivity.this,TeacherSettings.class);
+                intent.putExtra("token",key);
+                startActivity(intent);
+                finish();
+                break;
+
+
 
             case R.id.teacherLogout:
 
-                Intent intent = new Intent(TeacherHomeActivity.this,TeacherLogin.class);
-                startActivity(intent);
+                Intent logoutntent = new Intent(TeacherHomeActivity.this,TeacherLogin.class);
+                startActivity(logoutntent);
                 Toast.makeText(this, "You are log out successfully...", Toast.LENGTH_SHORT).show();
                 finish();
-
                 break;
+
+
+            case R.id.teacherchngpass:
+                Intent  resetIntent = new Intent(TeacherHomeActivity.this,ResetPassword.class);
+                resetIntent.putExtra("Key",key);
+                resetIntent.putExtra("type","teacher");
+                startActivity(resetIntent);
+                finish();
+                break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
 
-        return false;
+        return true;
 
 
 

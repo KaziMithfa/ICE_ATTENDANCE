@@ -72,7 +72,7 @@ public class TeacherLogin extends AppCompatActivity {
 
     private void verifyTeacher(String id, String pass) {
 
-        TeachersRef.addValueEventListener(new ValueEventListener() {
+        TeachersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot snapshot) {
 
@@ -104,12 +104,13 @@ public class TeacherLogin extends AppCompatActivity {
                         Intent intent = new Intent(TeacherLogin.this,TeacherHomeActivity.class);
                         intent.putExtra("Key",key);
                         startActivity(intent);
-
                         Toast.makeText(TeacherLogin.this, "You are logged in successfully......", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
 
                     else{
                         Toast.makeText(TeacherLogin.this, "your password is incorrect...!", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 
