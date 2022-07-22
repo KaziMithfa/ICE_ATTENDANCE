@@ -36,6 +36,7 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminActivity.this,SelectbatchandTerm.class);
+                intent.putExtra("type","Admin");
                 startActivity(intent);
                 finish();
             }

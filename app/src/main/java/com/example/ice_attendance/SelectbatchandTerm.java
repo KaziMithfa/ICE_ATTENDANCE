@@ -31,11 +31,14 @@ public class SelectbatchandTerm extends AppCompatActivity {
     private List<String> BatchList;
     private List<String> TermList;
     private String selectedTerm,selectedBatch;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectbatchand_term);
+
+        type = getIntent().getStringExtra("type");
 
         BatchSp = findViewById(R.id.selectBatchstdnt);
         TermSp = findViewById(R.id.selectTermstdnt);
@@ -156,10 +159,23 @@ public class SelectbatchandTerm extends AppCompatActivity {
         nxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SelectbatchandTerm.this,StudentList.class);
-                intent.putExtra("Batch",selectedBatch);
-                intent.putExtra("Term",selectedTerm);
-                startActivity(intent);
+
+                if(type.equals("Admin")){
+                    Intent intent = new Intent(SelectbatchandTerm.this,StudentList.class);
+                    intent.putExtra("Batch",selectedBatch);
+                    intent.putExtra("Term",selectedTerm);
+                    startActivity(intent);
+
+                }
+
+                else if(type.equals("Student")){
+                    Intent intent = new Intent(SelectbatchandTerm.this,StudentLogin.class);
+                    intent.putExtra("Batch",selectedBatch);
+                    intent.putExtra("Term",selectedTerm);
+                    startActivity(intent);
+
+                }
+
             }
         });
 

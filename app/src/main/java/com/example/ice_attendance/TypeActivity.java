@@ -40,6 +40,16 @@ public class TypeActivity extends AppCompatActivity {
             }
         });
 
+        StudentCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TypeActivity.this,SelectbatchandTerm.class);
+                intent.putExtra("type","Student");
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
 

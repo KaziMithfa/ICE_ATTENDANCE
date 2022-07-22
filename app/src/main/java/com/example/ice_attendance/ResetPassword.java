@@ -40,12 +40,17 @@ public class ResetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         toolbar = findViewById(R.id.resetpasswordtoolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         confirmpassword = findViewById(R.id.confirmpassword);
-       resetpassword = findViewById(R.id.resetpassword);
-       confirmBtn = findViewById(R.id.submissionBtn);
+        resetpassword = findViewById(R.id.resetpassword);
+        confirmBtn = findViewById(R.id.submissionBtn);
 
-       key = getIntent().getStringExtra("Key");
-       type = getIntent().getStringExtra("type");
+        key = getIntent().getStringExtra("Key");
+        type = getIntent().getStringExtra("type");
+
+
 
        if(type.equals("teacher")){
            ref = FirebaseDatabase.getInstance().getReference().child("Teachers");

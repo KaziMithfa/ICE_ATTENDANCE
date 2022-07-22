@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ICE_ATTENDANCE">
         <activity
+            android:name=".StudentPassword"
+            android:exported="false" />
+        <activity
+            android:name=".StudentsSettings"
+            android:exported="false" />
+        <activity
+            android:name=".StudentHome"
+            android:exported="false" />
+        <activity
+            android:name=".StudentLogin"
+            android:exported="false" />
+        <activity
             android:name=".TeacherSettings"
             android:exported="false" />
         <activity
@@ -44,7 +56,7 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".TypeActivity" />
-        <activity android:name=".ResetPassword"/>
+        <activity android:name=".ResetPassword" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
