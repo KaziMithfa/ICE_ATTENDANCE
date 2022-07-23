@@ -1,9 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentsSettings">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_studentsettings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFEA00"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/studenttoolbarsettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/studentclose_settings_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Close"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/studentupdate_settings_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@android:color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/studentimageupdate"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/app_bar_studentsettings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/profile"
+        />
+
+    <TextView
+        android:id="@+id/updatesettingstextId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/studentimageupdate"
+        android:text="Update profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/studentEmailsetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:layout_below="@id/updatesettingstextId"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        />
+
+    <EditText
+        android:id="@+id/studentphonesetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student phone"
+        android:textColor="@color/black"
+        android:layout_below="@id/studentEmailsetting"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:inputType="phone"
+        />
+
+
+
+
+
+
+</RelativeLayout>

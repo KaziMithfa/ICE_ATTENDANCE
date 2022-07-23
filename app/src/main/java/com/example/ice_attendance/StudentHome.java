@@ -139,7 +139,7 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
                 Intent intent = new Intent(StudentHome.this,StudentsSettings.class);
                 intent.putExtra("key",id);
                 intent.putExtra("batch",selectedBatch);
-                intent.putExtra("term",selectedBatch);
+                intent.putExtra("term",selectedTerm);
                 startActivity(intent);
                 finish();
                 break;
@@ -148,7 +148,7 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
                 Intent intent1 = new Intent(StudentHome.this,StudentPassword.class);
                 intent1.putExtra("key",id);
                 intent1.putExtra("batch",selectedBatch);
-                intent1.putExtra("term",selectedBatch);
+                intent1.putExtra("term",selectedTerm);
                 startActivity(intent1);
                 finish();
                 break;
