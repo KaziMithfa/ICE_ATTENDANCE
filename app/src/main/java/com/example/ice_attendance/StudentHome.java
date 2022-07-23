@@ -145,10 +145,11 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
                 break;
 
             case R.id.student_password:
-                Intent intent1 = new Intent(StudentHome.this,StudentPassword.class);
+                Intent intent1 = new Intent(StudentHome.this,ResetPassword.class);
                 intent1.putExtra("key",id);
                 intent1.putExtra("batch",selectedBatch);
                 intent1.putExtra("term",selectedTerm);
+                intent1.putExtra("type","Student");
                 startActivity(intent1);
                 finish();
                 break;

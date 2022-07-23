@@ -47,76 +47,120 @@ public class ResetPassword extends AppCompatActivity {
         resetpassword = findViewById(R.id.resetpassword);
         confirmBtn = findViewById(R.id.submissionBtn);
 
-        key = getIntent().getStringExtra("Key");
+
         type = getIntent().getStringExtra("type");
 
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (type.equals("teacher")) {
+                    key = getIntent().getStringExtra("Key");
+                    ref = FirebaseDatabase.getInstance().getReference().child("Teachers");
 
 
-       if(type.equals("teacher")){
-           ref = FirebaseDatabase.getInstance().getReference().child("Teachers");
-           confirmBtn.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   if(TextUtils.isEmpty(confirmpassword.getText().toString())){
-                       Toast.makeText(ResetPassword.this, "Please confirm your previous password first...", Toast.LENGTH_SHORT).show();
-                   }
+                    if (TextUtils.isEmpty(confirmpassword.getText().toString())) {
+                        Toast.makeText(ResetPassword.this, "Please confirm your previous password first...", Toast.LENGTH_SHORT).show();
+                    } else if (TextUtils.isEmpty(resetpassword.getText().toString())) {
+                        Toast.makeText(ResetPassword.this, "Please, reset the password....", Toast.LENGTH_SHORT).show();
+                    } else {
 
-                   else if(TextUtils.isEmpty(resetpassword.getText().toString())){
-                       Toast.makeText(ResetPassword.this, "Please, reset the password....", Toast.LENGTH_SHORT).show();
-                   }
+                        ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    Teacher teacher = snapshot.getValue(Teacher.class);
+                                    String pass = teacher.getPassword();
 
-                   else{
+                                    if (confirmpassword.getText().toString().equals(pass)) {
+                                        String newpass = resetpassword.getText().toString();
+                                        HashMap<String, Object> resetpasswordMap = new HashMap<>();
+                                        resetpasswordMap.put("password", newpass);
+                                        ref.child(key).updateChildren(resetpasswordMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(ResetPassword.this, "your password is reset successfully....", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(ResetPassword.this, TeacherHomeActivity.class);
+                                                    intent.putExtra("Key", key);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
 
-                     ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
-                         @Override
-                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                             if(snapshot.exists()){
-                                 Teacher teacher = snapshot.getValue(Teacher.class);
-                                 String pass = teacher.getPassword();
+                                            }
+                                        });
+                                    } else if (!confirmpassword.getText().toString().equals(pass)) {
+                                        Toast.makeText(ResetPassword.this, "your previous  password is incorrect!!! ", Toast.LENGTH_SHORT).show();
+                                        finish();
 
-                                 if(confirmpassword.getText().toString().equals(pass)){
-                                     String newpass = resetpassword.getText().toString();
-                                     HashMap<String,Object>resetpasswordMap = new HashMap<>();
-                                     resetpasswordMap.put("password",newpass);
-                                     ref.child(key).updateChildren(resetpasswordMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                         @Override
-                                         public void onComplete(@NonNull Task<Void> task) {
-                                             if(task.isSuccessful()){
-                                                 Toast.makeText(ResetPassword.this, "your password is reset successfully....", Toast.LENGTH_SHORT).show();
-                                                 Intent intent = new Intent(ResetPassword.this,TeacherHomeActivity.class);
-                                                 intent.putExtra("Key",key);
-                                                 startActivity(intent);
-                                                 finish();
-                                             }
+                                    }
+                                }
+                            }
 
-                                         }
-                                     });
-                                 }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                 else if(!confirmpassword.getText().toString().equals(pass)){
-                                     Toast.makeText(ResetPassword.this, "your previous  password is incorrect!!! ", Toast.LENGTH_SHORT).show();
-                                     finish();
+                            }
+                        });
 
-                                 }
-                             }
-                         }
+                    }
+                }
+                else if (type.equals("Student")) {
+                     key = getIntent().getStringExtra("key");
+                    String selectedBatch = getIntent().getStringExtra("batch");
+                    String selectedTerm = getIntent().getStringExtra("term");
 
-                         @Override
-                         public void onCancelled(@NonNull DatabaseError error) {
+                    ref = FirebaseDatabase.getInstance().getReference()
+                            .child("Batches").child(selectedBatch).child("Students")
+                            .child(selectedTerm).child(key);
 
-                         }
-                     });
+                    if (TextUtils.isEmpty(confirmpassword.getText().toString())) {
+                        Toast.makeText(ResetPassword.this, "Please , confirm your previous password first...", Toast.LENGTH_SHORT).show();
 
-                   }
-               }
-           });
+                    } else if (TextUtils.isEmpty(resetpassword.getText().toString())) {
+                        Toast.makeText(ResetPassword.this, "please , reset your password...", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    String pass = snapshot.child("password").getValue().toString();
+                                    if (pass.equals(confirmpassword.getText().toString())) {
+                                        HashMap<String, Object> resetMap = new HashMap<>();
+                                        resetMap.put("password", resetpassword.getText().toString());
+
+                                        ref.updateChildren(resetMap);
+                                        Toast.makeText(ResetPassword.this, "Your password has been updated successfully...", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(ResetPassword.this, StudentHome.class);
+                                        intent.putExtra("key", key);
+                                        intent.putExtra("batch", selectedBatch);
+                                        intent.putExtra("term", selectedTerm);
+                                        startActivity(intent);
+                                        finish();
+
+                                    } else {
+                                        Toast.makeText(ResetPassword.this, "your previous password is incorrect!!!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
 
 
-
-       }
-
+                }
 
 
+            }
 
+
+        });
     }
 }

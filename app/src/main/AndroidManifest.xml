@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ICE_ATTENDANCE">
         <activity
-            android:name=".StudentPassword"
-            android:exported="false" />
-        <activity
             android:name=".StudentsSettings"
             android:exported="false" />
         <activity
