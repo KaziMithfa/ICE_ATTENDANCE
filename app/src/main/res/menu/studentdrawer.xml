@@ -7,6 +7,13 @@
     <group android:id="@+id/group1">
 
         <item
+            android:id="@+id/student_home"
+            android:icon="@drawable/student"
+            android:title="Home"
+            android:iconTint="@color/white"
+            />
+
+        <item
             android:id="@+id/student_settings"
             android:icon="@drawable/settings"
             android:title="Settings"

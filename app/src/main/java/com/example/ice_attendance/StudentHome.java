@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,6 +49,21 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
         studentNavigationView = findViewById(R.id.student_nav_view_id);
         studentNavigationView.setNavigationItemSelectedListener(this);
 
+        if(savedInstanceState == null){
+
+            StudentFragment studentFragment = new StudentFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            Bundle data = new Bundle();
+            data.putString("key",id);
+            data.putString("batch",selectedBatch);
+            data.putString("term",selectedTerm);
+            studentFragment.setArguments(data);
+            fragmentTransaction.replace(R.id.studentfragmetncontainer,studentFragment).commit();
+
+            studentNavigationView.setCheckedItem(R.id.student_home);
+        }
+
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(StudentHome.this
         ,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -59,6 +75,7 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
         CircleImageView image = headerView.findViewById(R.id.studentprofileimage);
          name = headerView.findViewById(R.id.studentprofileNameset);
          studentId = headerView.findViewById(R.id.studentprofileIdset);
+
 
 
 
@@ -134,6 +151,19 @@ public class StudentHome extends AppCompatActivity implements NavigationView.OnN
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+
+            case R.id.student_home:
+
+                StudentFragment studentFragment = new StudentFragment();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+                Bundle data = new Bundle();
+                data.putString("key",id);
+                data.putString("batch",selectedBatch);
+                data.putString("term",selectedTerm);
+                studentFragment.setArguments(data);
+                fragmentTransaction.replace(R.id.studentfragmetncontainer,studentFragment).commit();
+                break;
 
             case R.id.student_settings:
                 Intent intent = new Intent(StudentHome.this,StudentsSettings.class);
